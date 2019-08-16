@@ -1,8 +1,15 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+var mongoose = require("mongoose");
 
-const questionSchema = new Schema({
-    // user schema according to fb/google policies
-})
+var userSchema = new mongoose.Schema({
+	hasPlayed: Boolean,
+    username: String,
+    password: String,
+	googleId: String,
+	facebookId: String,
+	fullName: String,
+	email: {type: String, sparse: true},
+	phoneNo: {type: String},
+	address: String,
+});
 
-module.exports = mongoose.model('question', questionSchema, 'questions')
+module.exports = mongoose.model("User", userSchema);

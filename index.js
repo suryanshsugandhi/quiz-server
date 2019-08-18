@@ -1,22 +1,26 @@
 const 
+    // modules
     express = require('express'),
+    app = express(),
     bodyParser = require('body-parser'),
     cors = require('cors'),
-    PORT = process.env.PORT || 3000,
+    // =====================================
+
+    // Routes
     api = require('./routes/api'),
-    app = express(),
-	passport = require('passport'),
+    question = require('./routes/question'),
+    passport = require('passport'),    
 	authRoutes = require('./routes/auth-routes.js'),
 	expressSession  = require("express-session"),
 	profileRoutes = require('./routes/profile-routes'),
-	passportSetup = require('./config/passport-setup'),
-	mongoose = require('mongoose');
+    passportSetup = require('./config/passport-setup'),
+    // =====================================
 
-mongoose.connect("mongodb+srv://invento:inv@cluster0-k9hjv.mongodb.net/test?retryWrites=true&w=majority", ()=>{
-	console.log("Connected to DB Success");
-});
+    // Environment
+    PORT = process.env.PORT || 3000;
+    // =====================================
 
-// initialize passport
+// Passport setup
 app.use(expressSession({
     secret: "My name is Aman",
     resave: false,
@@ -25,20 +29,31 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Protocols, parsers
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
+
+// Application router
 app.use('/api',api);
 app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
-app.use(function(req, res, next){
+app.use('/question', question)
+
+
+app.use((req, res, next)=>{
     res.locals.currentUsr = req.user;
     next();
 });
 
-app.get("/", function(req, res){
+app.get("/", (req, res)=>{
 	res.send("<a href='/auth/login'>Login Here</a>");
 });
 
-app.listen(PORT || 3000 || process.env.PORT, (req, res)=>{
+app.get("/profile", (req,res)=>{
+    res.render('Logged in successfully')
+})
+
+app.listen(PORT, (req, res)=>{
     console.log("Server running on localhost:" + PORT)
 });

@@ -2,7 +2,7 @@ const   express = require('express'),
         router = express.Router(),
         mongoose = require('mongoose'),
         // user DB
-        db = ''
+        db = 'mongodb+srv://server:eoE9bZQcq1wc0OEX@questions-5t8we.mongodb.net/test?retryWrites=true&w=majority'
 
 
 mongoose.connect(db, err => {
@@ -10,7 +10,7 @@ mongoose.connect(db, err => {
         console.error("User database error >>> " + err)
     }
     else{
-        console.log("Database connection successful")
+        console.log("Connected to users DB")
     }
 })
 

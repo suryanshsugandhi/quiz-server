@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router();
 
+const Question = require('../models/question')
+
 const mongoose = require('mongoose');
 const db = 'mongodb+srv://server:eoE9bZQcq1wc0OEX@questions-5t8we.mongodb.net/test?retryWrites=true&w=majority';
 
@@ -21,17 +23,20 @@ router.post('/fetch', (req,res)=>{
     // Export only questions not answers
     // JSON reponse
     if(databaseConnected){
-        res.status(200).send('Hello')
+        Question.find({}, (err,questions)=>{
+			if(err){
+				res.status.send('Unable to find questions')
+				console.log("Error fetching questions >>>", err);
+			}
+			else{
+				res.status(200).send(questions)
+				console.log("Questions fetched successfully")
+			}
+		})
     }
     else{
         res.status(501).send('Database error')
     }
 })
-
-router.post('/new', (req,res)=>{
-    // To add questions to the database
-    // To be done at last do not waste time
-})
-
 
 module.exports = router;

@@ -6,7 +6,7 @@ const db = 'mongodb+srv://server:eoE9bZQcq1wc0OEX@questions-5t8we.mongodb.net/te
 
 let databaseConnected = false;
 
-mongoose.connect(db,err=>{
+mongoose.connect(db, { useNewUrlParser: true }, err=>{
     if(err){
         console.log("Questions database error >>>", err);
     }

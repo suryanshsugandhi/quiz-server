@@ -5,7 +5,7 @@ const   express = require('express'),
         db = 'mongodb+srv://server:eoE9bZQcq1wc0OEX@questions-5t8we.mongodb.net/test?retryWrites=true&w=majority'
 
 
-mongoose.connect(db, err => {
+mongoose.connect(db, { useNewUrlParser: true } , err => {
     if(err){
         console.error("User database error >>> " + err)
     }

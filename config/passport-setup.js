@@ -46,7 +46,7 @@ passport.use(
     new FacebookStrategy({
         clientID: '2407095239535092',
         clientSecret: 'c9107159c3c21fe26b6e730218b9f7a4',
-		callbackURL: 'https://c9backup-wklcs.run.goorm.io/auth/facebook/redirect',
+		callbackURL: 'https://quiz-server-sbohj.run.goorm.io/auth/facebook/redirect',
 		profileFields: ['id', 'displayName', 'photos', 'email', 'address', 'last_name', 'first_name']
     }, (accessToken, refreshToken, profile, done)=>{
 			console.log(profile);

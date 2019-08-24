@@ -23,7 +23,7 @@ router.post('/fetch', (req,res)=>{
     // Export only questions not answers
     // JSON reponse
     if(databaseConnected){
-        Question.find({}, (err,questions)=>{
+        Question.find({}, {answer: 0}, (err,questions)=>{
 			if(err){
 				res.status.send('Unable to find questions')
 				console.log("Error fetching questions >>>", err);

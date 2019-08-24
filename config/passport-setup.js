@@ -1,7 +1,21 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
 const FacebookStrategy = require('passport-facebook');
+const mongooose = require('mongoose');
 const User = require('../models/user.js');
+
+// User database connection
+let databaseConnected = false;
+const db = ''
+mongoose.connect(db, { useNewUrlParser: true }, err=>{
+    if(err){
+        console.log("User database error >>>", err);
+    }
+    else{
+        databaseConnected = true;
+        console.log("Connected to Users DB")
+    }
+});
 
 passport.serializeUser((user, done) => {
     done(null, user.id);

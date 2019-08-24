@@ -7,7 +7,7 @@ const
     // =====================================
 
     // Routes
-    api = require('./routes/api'),
+    // api = require('./routes/api'),
     question = require('./routes/question'),
     passport = require('passport'),    
 	authRoutes = require('./routes/auth-routes.js'),
@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 // Application router
-app.use('/api',api);
+// app.use('/api',api);
 app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
 app.use('/question', question)

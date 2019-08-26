@@ -4,9 +4,7 @@
   "description": "Quiz game invento 2019 backend",
   "main": "index.js",
   "scripts": {
-    "run": "node index.js",
-    "build" : "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run": "node index.js"
   },
   "author": "suryansh",
   "license": "ISC",

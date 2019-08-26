@@ -54,7 +54,7 @@ conf = {
         origin: function (origin, cb) {
  
             // setup a white list
-            let wl = ['https://suryanshsugandhi.github.io/'];
+            let wl = ['https://suryanshsugandhi.github.io/quiz-app'];
  
             if (wl.indexOf(origin) != -1) {
  

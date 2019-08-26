@@ -4,7 +4,7 @@
   "description": "Quiz game invento 2019 backend",
   "main": "index.js",
   "scripts": {
-    "run": "node index.js"
+    "start": "node index.js"
   },
   "author": "suryansh",
   "license": "ISC",

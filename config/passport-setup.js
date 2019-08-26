@@ -1,7 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
 const FacebookStrategy = require('passport-facebook');
-const mongooose = require('mongoose');
+const mongoose = require('mongoose');
 const User = require('../models/user.js');
 
 // User database connection

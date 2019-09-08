@@ -17,7 +17,9 @@ mongoose.connect(db, { useNewUrlParser: true }, err=>{
         console.log("Connected to questions DB")
     }
 });
-
+router.get('/',(req, res)=>{
+    res.render('question.ejs',{user: req.user})
+});
 router.post('/fetch', (req,res)=>{
     // Select 20 random questions
     // Export only questions not answers

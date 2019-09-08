@@ -19,8 +19,28 @@ mongoose.connect(db, { useNewUrlParser: true }, err=>{
 });
 
 router.get('/',(req, res)=>{
-    res.render('question.ejs',{user: req.user})
+    let fetchedQuestions = fetchQuestions();
+    res.render('question.ejs',{user: req.user, questions: fetchedQuestions})
 });
+
+function fetchQuestions(){
+    if(databaseConnected){
+        Question.find({}, {answer: 0}, (err,questions)=>{
+			if(err){
+                console.log("Error fetching questions >>>", err);
+                return null;
+			}
+			else{
+				return questions;
+			}
+		})
+    }
+    else{
+        // res.status(501).send('Database error')
+        console.log("Database not connected");
+        return null;
+    }
+}
 
 router.post('/fetch', (req,res)=>{
     // Select 20 random questions

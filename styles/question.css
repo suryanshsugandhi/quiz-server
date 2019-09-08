@@ -1,0 +1,99 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card{
+    background: rgba(255, 255, 255, 0.507);
+    box-shadow: 5px 6px 12px 0px rgba(0,0,0,0.3);
+    min-height: 40vh;
+}
+
+.card-body{
+    text-align: left;
+    max-width: 30vw;
+
+}
+
+#question-no{
+    color:rgb(22, 180, 22);
+    font-weight: 700;
+}
+#none-selected{
+    color: #dc3545;
+    padding: 0 2vw;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+.hidden{
+    opacity: 0;
+    visibility: hidden;
+}
+.card-title{
+    color: #8E2DE2;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.option{
+    margin-bottom: 2vh;    
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+}
+
+.option-box{
+    border: 1px solid black;
+    border-radius: 60px;
+    padding: 1vh 2vw;
+    box-shadow: 2px 3px 3px -1px rgba(0,0,0,0.3);
+
+}
+
+.option-box:hover{
+    background: #000;
+    color: #fff;
+}
+
+.option-box.selected{
+    background: rgb(22, 180, 22);
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+#buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#buttons button{
+    border-radius: 30px;
+    box-shadow: 2px 3px 3px -1px rgba(0,0,0,0.3);
+
+
+}
+
+#accept{
+    background: none;
+
+    border: 1px solid #8E2DE2;
+    color: #8E2DE2;
+}
+
+#accept:hover{
+    background: #8E2DE2;
+    color: #fff;
+}
+
+
+#leave-quiz{
+    font-size: 0.8rem;
+    color: #dc3545;
+}
+
+#leave-quiz:hover{
+    color: #000;
+}

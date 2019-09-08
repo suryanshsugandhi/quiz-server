@@ -17,9 +17,11 @@ mongoose.connect(db, { useNewUrlParser: true }, err=>{
         console.log("Connected to questions DB")
     }
 });
+
 router.get('/',(req, res)=>{
     res.render('question.ejs',{user: req.user})
 });
+
 router.post('/fetch', (req,res)=>{
     // Select 20 random questions
     // Export only questions not answers
@@ -39,5 +41,15 @@ router.post('/fetch', (req,res)=>{
         res.status(501).send('Database error')
     }
 })
+
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated())
+     return next();
+    else
+    {  
+        res.redirect("/auth/login");
+    }
+}
 
 module.exports = router;

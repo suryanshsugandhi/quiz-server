@@ -1,5 +1,45 @@
 <% include ./partials/header %>
 </head>
 <body>
-    <%= user.fullName%>
+        <div class="container">
+                <div class="card my-5">
+                  <div class="card-body">
+                      <div id="question-no">
+                        1/15
+                      </div>
+                      <div id="none-selected" class="hidden text-left">
+                        Please select an option to continue!
+                      </div>
+                        <div id="question-title" class="card-title">
+                          <%= user.fullName%>
+                        </div> 
+            
+                        <div id="options" class="m-2">
+                          <div class="option row">
+                            <div class="col-1"><strong>A</strong></div>
+                            <div (click)="selectOption('a')" [class.selected]="selected=='a'" class="col-11 option-box">RJ Navneet</div>
+                          </div>
+                          <div class="option row">
+                              <div class="col-1"><strong>B</strong></div>
+                              <div (click)="selectOption('b')" [class.selected]="selected=='b'" class="col-11 option-box">RJ Gaurav</div>
+                            </div>
+                            <div class="option row">
+                                <div class="col-1"><strong>C</strong></div>
+                                <div (click)="selectOption('c')" [class.selected]="selected=='c'" class="col-11 option-box">RJ Raunak</div>
+                              </div>
+                              <div class="option row">
+                                  <div class="col-1"><strong>D</strong></div>
+                                  <div (click)="selectOption('d')" [class.selected]="selected=='d'" class="col-11 option-box">RJ Pritam</div>
+                                </div>
+                        </div>
+                      <div id="buttons">
+                        <a id="leave-quiz" href="#">Leave the quiz</a>
+                        <button (click)="submit()" class="btn btn-sm mr-2" id="accept">Next</button>
+            
+                      </div>
+              
+            
+                  </div>
+                </div>
+              </div>
 <% include ./partials/footer %>

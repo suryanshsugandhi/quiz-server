@@ -1,0 +1,88 @@
+section{
+    min-height: 70vh;
+}
+#info-box .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo *{
+    max-height: 12vh;
+    width: auto;
+}
+
+#heading{
+    font-size: 3rem;
+    font-weight: 700;
+    color: #8E2DE2;
+    font-family: 'Lexend Deca', sans-serif;
+    text-align: center;
+}
+#tagline{
+    font-size: 20px;
+    color: #666;
+
+}
+
+ul{
+    list-style-type: none;
+}
+
+#buttons .btn{
+    border-radius: 30px;
+}
+
+#buttons #play-btn{
+    /* background: #6159f7; */
+    background: rgba(255, 255, 255, 0.507);  /* fallback for old browsers */
+/* background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  
+background: linear-gradient(to right, #4A00E0, #8E2DE2); */
+    border: 1px solid #8E2DE2;
+    color: #8E2DE2;
+}
+
+#buttons #play-btn:hover{
+    background: #8E2DE2;
+    color: #fff;
+}
+
+#buttons #about-btn{
+    background: rgba(255, 255, 255, 0.507);
+    border: 1px solid #666;
+    color: #000;
+}
+
+#buttons #about-btn:hover{
+    background: #000;
+    color: #fff;
+}
+
+
+.card{
+    background: rgba(255, 255, 255, 0.507);
+    margin-top: 2vh;
+}
+
+.card-title{
+    text-align: center;
+    color: #8E2DE2;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.card-text{
+    color: #666;
+    font-size: 0.8rem;
+
+}
+
+.card table{
+    overflow: scroll;
+}

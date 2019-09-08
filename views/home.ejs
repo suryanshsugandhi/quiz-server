@@ -1,0 +1,101 @@
+<!-- views/partials/header.ejs -->
+<% include ./partials/header %>
+<!-- views/partials/navbar.ejs -->
+<link rel="stylesheet" type="text/css" href="/home.css">
+</head>
+<body>
+    <% include ./partials/navbar %>
+
+    <section id="info-box" class="my-4">
+        <div class="container">
+      
+          <div id="logo">
+            <div id="invento-logo" class="mr-2">
+              <img src="/assets/inventologo.png" alt="">
+            </div>
+            <div id="davv-logo" class="mx-2">
+              <img src="/assets/davvicon.png" alt="">
+            </div>
+          </div>
+          <div id="content">
+              <div id="heading" class="mt-2 ml-lg-2">
+                  Invento Quiz Competition
+                </div>
+            
+                <div id="tagline">
+                  <ul>
+                    <li>
+                      Answer 15 quick questions
+                    </li>
+                    <li>
+                      Free invento passes for top 5 winners
+            
+                    </li>
+                    <li>
+                      Win goodies, merchandise, food coupons and more
+                    </li>
+                  </ul>
+                </div>
+          </div>
+          
+          <div id="buttons" class="my-2">
+            <a id="play-btn" class="btn m-2" href="/auth/login">Play Now!</a>
+            <a id="about-btn" class="btn m-2" href="http://www.invento2k19.in" target="_blank">Learn more</a>
+          </div>
+      
+          <a href="#leaderboard" class="mt-5">See leaderboard</a>
+        </div>
+      
+      </section>
+      
+      <section class="" id="leaderboard">
+        <div class="container">
+      
+      
+          <div class="card">
+            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+            <div class="card-body">
+              <h5 class="card-title">Leaderboard</h5>
+              <p class="card-text text-secondary text-center mt-0">Top participants</p>
+      
+              <table class="table table-hover">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark Otto</td>
+                    <td>15</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob Thornton</td>
+                    <td>13</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry Bird</td>
+                    <td>11</td>
+                  </tr>
+                </tbody>
+              </table>
+      
+              <p class="card-text">
+                Total Players: 69
+                <br>
+                Average Score: 9
+              </p>
+      
+              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+          </div>
+        </div>
+      
+      </section>
+
+<% include ./partials/footer %>

@@ -1,0 +1,33 @@
+
+body{
+    font-family: 'Lexend Deca', sans-serif;
+    
+    background: url('/assets/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #7b8c9e;
+
+    height: 100%;
+
+
+}
+
+html{
+    scroll-behavior: smooth;
+
+}
+
+*{
+    transition: all 0.3s;
+}
+
+a{
+    color: #8E2DE2;
+}
+a:hover{
+    color: #000;
+    text-decoration: none;
+}
+a:visited{
+    color: #8E2DE2;
+}

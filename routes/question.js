@@ -25,12 +25,11 @@ router.post('/fetch', (req,res)=>{
     if(databaseConnected){
         Question.find({}, {answer: 0}, (err,questions)=>{
 			if(err){
-				res.status.send('Unable to find questions')
+				res.status(501).send('Unable to find questions');
 				console.log("Error fetching questions >>>", err);
 			}
 			else{
-				res.status(200).send(questions)
-				console.log("Questions fetched successfully")
+				// function to send 15 random questions
 			}
 		})
     }

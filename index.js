@@ -17,7 +17,7 @@ const
     // =====================================
 
     // Environment
-    PORT = process.env.PORT;
+    PORT = process.env.PORT || 3000;
     // =====================================
 
 // Passport setup
@@ -42,7 +42,8 @@ app.use(passport.session());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
-
+app.use(express.static("public"));
+app.use(express.static(__dirname + '/styles'));
 // Application router
 // app.use('/api',api);
 app.use('/auth', authRoutes);
@@ -56,7 +57,7 @@ app.use((req, res, next)=>{
 });
 
 app.get("/", (req, res)=>{
-	res.send("<a href='/auth/login'>Login Here</a>");
+	res.render("home.ejs");
 });
 
 app.get("/profile", (req,res)=>{

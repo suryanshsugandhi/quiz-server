@@ -34,10 +34,10 @@ router.get('/rules/:method', (req,res)=>{
     .then((questions)=>{
         console.log("Questions fetched in route");
         if(method == 'google'){
-            User.findOneAndUpdate({googleId: req.user.googleId}, {"questions": questions})
+            User.findOneAndUpdate({googleId: req.user.googleId}, {$inc: {"questions": questions}});
         }
         else if(method == 'facebook'){
-            User.findOneAndUpdate({facebookId: req.user.facebookId}, {"questions": questions})
+            User.findOneAndUpdate({facebookId: req.user.facebookId}, {$inc: {"questions": questions}});
         }
     })
 

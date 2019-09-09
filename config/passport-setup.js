@@ -3,6 +3,7 @@ const GoogleStrategy = require('passport-google-oauth20');
 const FacebookStrategy = require('passport-facebook');
 const mongoose = require('mongoose');
 const User = require('../models/user.js');
+const Question = require('../models/question')
 
 // User database connection
 let databaseConnected = false;
@@ -37,24 +38,57 @@ passport.use(
 			console.log(profile);
 			User.findOne({googleId: profile.id}).then((foundUser)=>{
 				if(foundUser){
-					console.log("User already exists"+foundUser);
+					res.render("You can only play once")
 					done(null, foundUser);
 				}
 				else{
-					new User({
-						googleId: profile.id,
-						fullName: profile.displayName,
-						email: profile._json.email,
-					}).save().then((newUser)=>{
-						console.log("new user created successfully");
-						done(null, newUser);
-						});
+					var questions = getQuestions().then(()=>{
+						new User({
+							googleId: profile.id,
+							fullName: profile.displayName,
+							email: profile._json.email,
+							questions: questions,
+							picture: profile.picture
+						}).save().then((newUser)=>{
+							console.log("new user created successfully");
+							done(null, newUser);
+							});
+					})	
 				}
 			});
 
        }
 	)
 );
+
+async function getQuestions(){
+    if(databaseConnected){
+        var questions = await Question.find({}, {answer: 0}, (err,questions)=>{
+			if(err){
+                console.log("Error fetching questions >>>", err);
+                return 0;
+			}
+			else{
+                console.log("Questions fetched successfully")
+			}
+        })
+        // ##############To Randomize Array###################
+        var l = questions.length;
+        for(var i=0; i<l-1; i++){
+            var rand = Math.floor((Math.random() * (l-i-1)) + i+1);
+            var temp = questions[i];
+            questions[i] = questions[rand];
+            questions[rand] = temp;
+        }
+        // ###################################################
+        questions = questions.slice(0,15);
+        return (questions);
+    }
+    else{
+        console.log("Database not connected");
+        return 0;
+    }
+}
 
 passport.use(
     new FacebookStrategy({

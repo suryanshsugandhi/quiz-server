@@ -20,42 +20,17 @@ mongoose.connect(db, { useNewUrlParser: true }, err=>{
 });
 
 router.get('/', (req, res)=>{
-    var questions = getQuestions()
-    .then((questions)=>{
-        console.log("Questions fetched in route");
-        res.render('question.ejs',{user: req.user, questions: questions})
-    })
+    // var questions = getQuestions()
+    // .then((questions)=>{
+    //     console.log("Questions fetched in route");
+    //     res.render('question.ejs',{user: req.user, questions: req.user.questions})
+    // })
+    console.log(req.user.questions)
+    res.render('question.ejs',{user: req.user, questions: req.user.questions})
 
 });
 
 router.get('/rules', (req,res)=>{
-    // add questions to user db
-    var method = req.query.method;
-
-    var questions = getQuestions()
-    .then((questions)=>{
-        console.log("Questions fetched in route");
-        if(method == 'google'){
-            User.findOneAndUpdate({
-                query: {googleId: req.user.googleId},
-                update : { $inc: { questions: questions } },
-                upsert: true
-            })
-            console.log('Google login', googleId)
-        }
-        else if(method == 'facebook'){
-            User.findOneAndUpdate({
-                query: {facebookId: req.user.facebookId},
-                update : { $inc: { questions: questions } },
-                upsert: true
-            })
-            console.log('Facebook login', facebookId)
-        }
-        else{
-            console.log('Skipped', questions)
-        }
-    })
-
     res.render('rules.ejs', {user: req.user});
 })
 

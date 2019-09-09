@@ -36,12 +36,20 @@ router.get('/rules', (req,res)=>{
     .then((questions)=>{
         console.log("Questions fetched in route");
         if(method == 'google'){
-            User.findOneAndUpdate({googleId: req.user.googleId}, {$inc: {"questions": questions}});
-            console.log('Google login', questions)
+            User.findAndModify({
+                query: {googleId: req.user.googleId},
+                update : { $inc: { questions: questions } },
+                upsert: true
+            })
+            console.log('Google login', googleId)
         }
         else if(method == 'facebook'){
-            User.findOneAndUpdate({facebookId: req.user.facebookId}, {$inc: {"questions": questions}});
-            console.log('Facebook login', questions)
+            User.findAndModify({
+                query: {facebookId: req.user.facebookId},
+                update : { $inc: { questions: questions } },
+                upsert: true
+            })
+            console.log('Facebook login', facebookId)
         }
         else{
             console.log('Skipped', questions)

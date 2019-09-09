@@ -12,13 +12,13 @@
                         Please select an option to continue!
                       </div>
                         <div id="question-title" class="card-title">
-                          <%= questions%>
+                          <%= questions[0].title%>
                         </div> 
             
                         <div id="options" class="m-2">
                           <div class="option row">
                             <div class="col-1"><strong>A</strong></div>
-                            <div (click)="selectOption('a')" [class.selected]="selected=='a'" class="col-11 option-box">RJ Navneet</div>
+                            <div (click)="selectOption('a')" [class.selected]="selected=='a'" class="col-11 option-box"><%= questions[0].options %></div>
                           </div>
                           <div class="option row">
                               <div class="col-1"><strong>B</strong></div>
@@ -43,4 +43,5 @@
                   </div>
                 </div>
               </div>
+
 <% include ./partials/footer %>

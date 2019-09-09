@@ -1,18 +1,6 @@
 const   express = require('express'),
-        router = express.Router(),
-        mongoose = require('mongoose'),
-        // user DB
-        db = 'mongodb+srv://server:eoE9bZQcq1wc0OEX@questions-5t8we.mongodb.net/test?retryWrites=true&w=majority'
-
-
-mongoose.connect(db, { useNewUrlParser: true } , err => {
-    if(err){
-        console.error("User database error >>> " + err)
-    }
-    else{
-        console.log("Connected to users DB")
-    }
-})
+        router = express.Router();
+    
 
 router.post('/', (req, res)=>{
     res.status(404).send('Route not found')

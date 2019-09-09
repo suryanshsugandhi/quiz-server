@@ -4,18 +4,18 @@ const FacebookStrategy = require('passport-facebook');
 const mongoose = require('mongoose');
 const User = require('../models/user.js');
 
-// User database connection
-let databaseConnected = false;
-const db = ''
-mongoose.connect(db, { useNewUrlParser: true }, err=>{
-    if(err){
-        console.log("User database error >>>", err);
-    }
-    else{
-        databaseConnected = true;
-        console.log("Connected to Users DB")
-    }
-});
+// // User database connection
+// let databaseConnected = false;
+// const db = ''
+// mongoose.connect(db, { useNewUrlParser: true }, err=>{
+//     if(err){
+//         console.log("User database error >>>", err);
+//     }
+//     else{
+//         databaseConnected = true;
+//         console.log("Connected to Users DB")
+//     }
+// });
 
 passport.serializeUser((user, done) => {
     done(null, user.id);

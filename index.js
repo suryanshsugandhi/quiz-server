@@ -8,7 +8,7 @@ const
 
     // Routes
     // api = require('./routes/api'),
-    question = require('./routes/question'),
+    questionRoute = require('./routes/question-route'),
     passport = require('passport'),    
 	authRoutes = require('./routes/auth-routes.js'),
 	expressSession  = require("express-session"),
@@ -43,13 +43,12 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(express.static("public"));
-app.use(express.static(__dirname + '/styles'));
+app.use(express.static(__dirname + '/public'));
 // Application router
 // app.use('/api',api);
 app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
-app.use('/question', question)
-
+app.use('/question', questionRoute)
 
 app.use((req, res, next)=>{
     res.locals.currentUsr = req.user;
@@ -59,10 +58,6 @@ app.use((req, res, next)=>{
 app.get("/", (req, res)=>{
 	res.render("home.ejs");
 });
-
-app.get("/profile", (req,res)=>{
-    res.render('Logged in successfully')
-})
 
 app.listen(PORT, (req, res)=>{
     console.log("Server running on localhost:" + PORT)

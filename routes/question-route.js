@@ -1,48 +1,32 @@
 const express = require('express')
 const router = express.Router();
 
-const Question = require('../models/question')
-const User = require('../models/user')
+router.get('/', (req, res)=>{
+    res.render('question.ejs',{user: req.user, questions: req.user.questions})
+    res.redirect('/?number=0')
+});
 
-const mongoose = require('mongoose');
-const db = 'mongodb+srv://server:eoE9bZQcq1wc0OEX@questions-5t8we.mongodb.net/test?retryWrites=true&w=majority';
+router.post('/', (req,res)=>{
+    var option = req.params.option,
+        questionNumber = req.params.question;
+    // add to database
+    res.redirect('/?number=questionNumber')
+})
 
-let databaseConnected = false;
-
-mongoose.connect(db, { useNewUrlParser: true }, err=>{
-    if(err){
-        console.log("Questions database error >>>", err);
+router.get('/:number', (req, res)=>{
+    if(req.params.number < 15){
+        var questionNumber = req.params.number,
+            questions = req.user.questions[questionNumber];
+        res.render('question.ejs', {user: req.user, question: questions, number: questionNumber})
     }
     else{
-        databaseConnected = true;
-        console.log("Connected to questions DB")
+        res.send("Quiz complete!");
     }
-});
-
-router.get('/', (req, res)=>{
-    getUserQuestions()
-    .then((questions)=>{
-        console.log(req.user.questions)
-        res.render('question.ejs',{user: req.user, questions: req.user.questions})
-        
-    });
-});
+})
 
 router.get('/rules', (req,res)=>{
     res.render('rules.ejs', {user: req.user});
 })
-
-async function getUserQuestions(userId){
-    var questions = await User.find({_id: userId}, (err, user)=>{
-        if(err){
-            console.log("Error fetching user questions >>>", err);
-        }
-        else{
-            console.log("User Questions fetched")
-        }
-        return user.questions;
-    });
-}
 
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated())

@@ -6,36 +6,37 @@
                 <div class="card my-5">
                   <div class="card-body">
                       <div id="question-no">
-                        1/15
+                        <%= questionNumber %>/15
                       </div>
                       <div id="none-selected" class="hidden text-left">
                         Please select an option to continue!
                       </div>
                         <div id="question-title" class="card-title">
-                          <%= questions[1].title %>
+                          <%= question.title %>
                         </div> 
             
                         <div id="options" class="m-2">
                           <div class="option row">
                             <div class="col-1"><strong>A</strong></div>
-                            <div onclick="selectOption('a')" class="col-11 option-box" id="a"><%= questions[1].options.split(",")[0] %></div>
+                            <div onclick="selectOption('a')" class="col-11 option-box" id="a"><%= question.options.split(",")[0] %></div>
                           </div>
                           <div class="option row">
                               <div class="col-1"><strong>B</strong></div>
-                              <div onclick="selectOption('b')" class="col-11 option-box" id="b"><%= questions[1].options.split(",")[1] %></div>
+                              <div onclick="selectOption('b')" class="col-11 option-box" id="b"><%= question.options.split(",")[1] %></div>
                             </div>
                             <div class="option row">
                                 <div class="col-1"><strong>C</strong></div>
-                                <div onclick="selectOption('c')" class="col-11 option-box" id="c"><%= questions[1].options.split(",")[2] %></div>
+                                <div onclick="selectOption('c')" class="col-11 option-box" id="c"><%= question.options.split(",")[2] %></div>
                               </div>
                               <div class="option row">
                                   <div class="col-1"><strong>D</strong></div>
-                                  <div onclick="selectOption('d')" class="col-11 option-box" id="d"><%= questions[1].options.split(",")[3] %></div>
+                                  <div onclick="selectOption('d')" class="col-11 option-box" id="d"><%= question.options.split(",")[3] %></div>
                                 </div>
                         </div>
                       <div id="buttons">
                         <a id="leave-quiz" href="/auth/logout">Leave the quiz</a>
                         <form action="/" method="GET">
+                          <input id="question-number" name="question" type="number" class="hidden2">
                           <input id="selected-option" name="option" type="text" class="hidden2">
                           <input type="submit" class="btn btn-sm mr-2" id="accept" placeholder="Next">
                         </form>

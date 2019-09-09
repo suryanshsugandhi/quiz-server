@@ -11,7 +11,9 @@ var userSchema = new mongoose.Schema({
 	phoneNo: {type: String},
 	address: String,
 	questions: Array,
-	picture: String
+	picture: String,
+	answers: Array,
+	score: Number
 });
 
 module.exports = mongoose.model("User", userSchema);

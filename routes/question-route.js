@@ -20,47 +20,28 @@ mongoose.connect(db, { useNewUrlParser: true }, err=>{
 });
 
 router.get('/', (req, res)=>{
-    // var questions = getQuestions()
-    // .then((questions)=>{
-    //     console.log("Questions fetched in route");
-    //     res.render('question.ejs',{user: req.user, questions: req.user.questions})
-    // })
-    console.log(req.user.questions)
-    res.render('question.ejs',{user: req.user, questions: req.user.questions})
-
+    getUserQuestions()
+    .then((questions)=>{
+        console.log(req.user.questions)
+        res.render('question.ejs',{user: req.user, questions: questions})
+        
+    });
 });
 
 router.get('/rules', (req,res)=>{
     res.render('rules.ejs', {user: req.user});
 })
 
-async function getQuestions(){
-    if(databaseConnected){
-        var questions = await Question.find({}, {answer: 0}, (err,questions)=>{
-			if(err){
-                console.log("Error fetching questions >>>", err);
-                return 0;
-			}
-			else{
-                console.log("Questions fetched successfully")
-			}
-        })
-        // ##############To Randomize Array###################
-        var l = questions.length;
-        for(var i=0; i<l-1; i++){
-            var rand = Math.floor((Math.random() * (l-i-1)) + i+1);
-            var temp = questions[i];
-            questions[i] = questions[rand];
-            questions[rand] = temp;
+async function getUserQuestions(userId){
+    var questions = await questions.find({_id: userId}, (err, user)=>{
+        if(err){
+            console.log("Error fetching user questions >>>", err);
         }
-        // ###################################################
-        questions = questions.slice(0,15);
-        return (questions);
-    }
-    else{
-        console.log("Database not connected");
-        return 0;
-    }
+        else{
+            console.log("User Questions fetched")
+        }
+        return user.questions;
+    });
 }
 
 function isLoggedIn(req, res, next){

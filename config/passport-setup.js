@@ -63,6 +63,42 @@ passport.use(
 	)
 );
 
+passport.use(
+    new FacebookStrategy({
+        clientID: '2407095239535092',
+        clientSecret: 'c9107159c3c21fe26b6e730218b9f7a4',
+		callbackURL: 'https://quizinvento.herokuapp.com/auth/facebook/redirect',
+		profileFields: ['id', 'displayName', 'photos', 'email', 'address', 'last_name', 'first_name']
+    }, (accessToken, refreshToken, profile, done)=>{
+			console.log(profile);
+		    User.findOne({facebookId: profile.id}).then((foundUser)=>{
+				if(foundUser){
+					console.log("User already exists"+foundUser);
+					done(null, foundUser);
+				}
+				else{
+					getQuestions()
+					.then((questions)=>{
+						new User({
+							facebookId: profile.id,
+							email: profile._json.email,
+							fullName: profile.displayName,
+							address: profile.address,
+							questions: questions,
+							picture: profile.photos
+						}).save().then((newUser)=>{
+							console.log("new user created successfully");
+							done(null, newUser);
+							});
+					});
+					
+				}
+			});
+
+       }
+	)
+);
+
 async function getQuestions(){
     if(databaseConnected){
         var questions = await Question.find({}, {answer: 0}, (err,questions)=>{
@@ -91,33 +127,3 @@ async function getQuestions(){
         return 0;
     }
 }
-
-passport.use(
-    new FacebookStrategy({
-        clientID: '2407095239535092',
-        clientSecret: 'c9107159c3c21fe26b6e730218b9f7a4',
-		callbackURL: 'https://quiz-server-sbohj.run.goorm.io/auth/facebook/redirect',
-		profileFields: ['id', 'displayName', 'photos', 'email', 'address', 'last_name', 'first_name']
-    }, (accessToken, refreshToken, profile, done)=>{
-			console.log(profile);
-		    User.findOne({facebookId: profile.id}).then((foundUser)=>{
-				if(foundUser){
-					console.log("User already exists"+foundUser);
-					done(null, foundUser);
-				}
-				else{
-					new User({
-						facebookId: profile.id,
-						email: profile._json.email,
-						fullName: profile.displayName,
-						address: profile.address
-					}).save().then((newUser)=>{
-						console.log("new user created successfully");
-						done(null, newUser);
-						});
-				}
-			});
-
-       }
-	)
-);

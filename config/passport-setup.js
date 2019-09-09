@@ -44,6 +44,7 @@ passport.use(
 				else{
 					getQuestions()
 					.then((questions)=>{
+						console.log("selected questions>>>",questions);
 						new User({
 							googleId: profile.id,
 							fullName: profile.displayName,

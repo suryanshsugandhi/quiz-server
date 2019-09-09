@@ -10,6 +10,8 @@ var userSchema = new mongoose.Schema({
 	email: {type: String, sparse: true},
 	phoneNo: {type: String},
 	address: String,
+	questions: Array,
+	picture: String
 });
 
 module.exports = mongoose.model("User", userSchema);

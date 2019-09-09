@@ -36,7 +36,7 @@ router.get('/rules', (req,res)=>{
     .then((questions)=>{
         console.log("Questions fetched in route");
         if(method == 'google'){
-            User.findAndModify({
+            User.findOneAndUpdate({
                 query: {googleId: req.user.googleId},
                 update : { $inc: { questions: questions } },
                 upsert: true
@@ -44,7 +44,7 @@ router.get('/rules', (req,res)=>{
             console.log('Google login', googleId)
         }
         else if(method == 'facebook'){
-            User.findAndModify({
+            User.findOneAndUpdate({
                 query: {facebookId: req.user.facebookId},
                 update : { $inc: { questions: questions } },
                 upsert: true

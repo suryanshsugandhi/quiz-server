@@ -23,7 +23,7 @@ router.get('/', (req, res)=>{
     getUserQuestions()
     .then((questions)=>{
         console.log(req.user.questions)
-        res.render('question.ejs',{user: req.user, questions: questions})
+        res.render('question.ejs',{user: req.user, questions: req.user.questions})
         
     });
 });

@@ -12,27 +12,25 @@
                         Please select an option to continue!
                       </div>
                         <div id="question-title" class="card-title">
-                          <!-- <%= questions[1].title %> -->
-                          Title
+                          <%= questions[1].title %>
                         </div> 
             
                         <div id="options" class="m-2">
                           <div class="option row">
                             <div class="col-1"><strong>A</strong></div>
-                            <div onclick="selectOption('a')" class="col-11 option-box" id="a">a</div>
-                            <!-- <div onclick="selectOption('a')" class="col-11 option-box" id="a"><%= questions[1].options.split(",")[0] %></div> -->
+                            <div onclick="selectOption('a')" class="col-11 option-box" id="a"><%= questions[1].options.split(",")[0] %></div>
                           </div>
                           <div class="option row">
                               <div class="col-1"><strong>B</strong></div>
-                              <div onclick="selectOption('b')" class="col-11 option-box" id="b">b</div>
+                              <div onclick="selectOption('b')" class="col-11 option-box" id="b"><%= questions[1].options.split(",")[1] %></div>
                             </div>
                             <div class="option row">
                                 <div class="col-1"><strong>C</strong></div>
-                                <div onclick="selectOption('c')" class="col-11 option-box" id="c">c</div>
+                                <div onclick="selectOption('c')" class="col-11 option-box" id="c"><%= questions[1].options.split(",")[2] %></div>
                               </div>
                               <div class="option row">
                                   <div class="col-1"><strong>D</strong></div>
-                                  <div onclick="selectOption('d')" class="col-11 option-box" id="d">d</div>
+                                  <div onclick="selectOption('d')" class="col-11 option-box" id="d"><%= questions[1].options.split(",")[3] %></div>
                                 </div>
                         </div>
                       <div id="buttons">

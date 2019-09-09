@@ -14,8 +14,8 @@ router.post('/', (req,res)=>{
 })
 
 router.get('/:number', (req, res)=>{
-    if(req.params.number < 15){
-        var questionNumber = req.params.number,
+    if(req.query.number < 15){
+        var questionNumber = req.query.number,
             questions = req.user.questions[questionNumber];
         res.render('question.ejs', {user: req.user, question: questions, number: questionNumber})
     }

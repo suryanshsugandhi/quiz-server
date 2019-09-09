@@ -36,7 +36,7 @@
                       <div id="buttons">
                         <a id="leave-quiz" href="/auth/logout">Leave the quiz</a>
                         <form action="/" method="GET">
-                          <input id="question-number" name="question" type="number" class="hidden2">
+                          <input id="question-number" name="question" type="number" class="hidden2" value="<%=questionNumber%>">
                           <input id="selected-option" name="option" type="text" class="hidden2">
                           <input type="submit" class="btn btn-sm mr-2" id="accept" placeholder="Next">
                         </form>

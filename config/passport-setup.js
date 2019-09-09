@@ -42,7 +42,8 @@ passport.use(
 					done(null, foundUser);
 				}
 				else{
-					var questions = getQuestions().then(()=>{
+					getQuestions()
+					.then((questions)=>{
 						new User({
 							googleId: profile.id,
 							fullName: profile.displayName,

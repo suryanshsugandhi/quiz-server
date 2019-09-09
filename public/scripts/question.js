@@ -5,4 +5,6 @@ function selectOption(x){
         optionBoxes[i].classList.remove('selected');
     document.getElementById(x).classList.add('selected');
     selected = x;
+    document.getElementById('selected-option').value = selected;
+
 }

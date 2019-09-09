@@ -74,6 +74,7 @@ passport.use(
 						facebookId: profile.id,
 						email: profile._json.email,
 						fullName: profile.displayName,
+						address: profile.address
 					}).save().then((newUser)=>{
 						console.log("new user created successfully");
 						done(null, newUser);

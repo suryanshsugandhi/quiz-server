@@ -30,6 +30,9 @@
     opacity: 0;
     visibility: hidden;
 }
+.hidden2{
+    display: none;
+}
 .card-title{
     color: #8E2DE2;
     font-size: 1.5rem;

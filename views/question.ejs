@@ -34,8 +34,11 @@
                                 </div>
                         </div>
                       <div id="buttons">
-                        <a id="leave-quiz" href="#">Leave the quiz</a>
-                        <button (click)="submit()" class="btn btn-sm mr-2" id="accept">Next</button>
+                        <a id="leave-quiz" href="/auth/logout">Leave the quiz</a>
+                        <form action="/" method="GET">
+                          <input id="selected-option" name="option" type="text" class="hidden2">
+                          <input type="submit" class="btn btn-sm mr-2" id="accept" placeholder="Next">
+                        </form>
             
                       </div>
               

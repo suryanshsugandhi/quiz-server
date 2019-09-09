@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();
 
 const Question = require('../models/question')
+const User = require('../models/user')
 
 const mongoose = require('mongoose');
 const db = 'mongodb+srv://server:eoE9bZQcq1wc0OEX@questions-5t8we.mongodb.net/test?retryWrites=true&w=majority';
@@ -26,6 +27,22 @@ router.get('/', (req, res)=>{
     })
 
 });
+
+router.get('/rules/:method', (req,res)=>{
+    // add questions to user db
+    var questions = getQuestions()
+    .then((questions)=>{
+        console.log("Questions fetched in route");
+        if(method == 'google'){
+            User.findOneAndUpdate({googleId: req.user.googleId}, {"questions": questions})
+        }
+        else if(method == 'facebook'){
+            User.findOneAndUpdate({facebookId: req.user.facebookId}, {"questions": questions})
+        }
+    })
+
+    res.render('rules.ejs', {user: req.user});
+})
 
 async function getQuestions(){
     if(databaseConnected){

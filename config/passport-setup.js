@@ -38,7 +38,7 @@ passport.use(
 			console.log(profile);
 			User.findOne({googleId: profile.id}).then((foundUser)=>{
 				if(foundUser){
-					res.render("You can only play once")
+					res.redirect('/')
 					done(null, foundUser);
 				}
 				else{

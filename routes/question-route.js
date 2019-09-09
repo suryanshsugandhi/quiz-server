@@ -33,7 +33,7 @@ router.get('/rules', (req,res)=>{
 })
 
 async function getUserQuestions(userId){
-    var questions = await questions.find({_id: userId}, (err, user)=>{
+    var questions = await User.find({_id: userId}, (err, user)=>{
         if(err){
             console.log("Error fetching user questions >>>", err);
         }

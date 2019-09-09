@@ -28,16 +28,23 @@ router.get('/', (req, res)=>{
 
 });
 
-router.get('/rules/:method', (req,res)=>{
+router.get('/rules', (req,res)=>{
     // add questions to user db
+    var method = req.query.method;
+
     var questions = getQuestions()
     .then((questions)=>{
         console.log("Questions fetched in route");
         if(method == 'google'){
             User.findOneAndUpdate({googleId: req.user.googleId}, {$inc: {"questions": questions}});
+            console.log('Google login', questions)
         }
         else if(method == 'facebook'){
             User.findOneAndUpdate({facebookId: req.user.facebookId}, {$inc: {"questions": questions}});
+            console.log('Facebook login', questions)
+        }
+        else{
+            console.log('Skipped', questions)
         }
     })
 

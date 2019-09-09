@@ -21,7 +21,7 @@ router.get('/google', passport.authenticate('google', {
 
 // callback route for google to redirect to
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-    res.redirect('/question/rules/google');
+    res.redirect('/question/rules/?method=google');
 });
 
 // auth with facebook
@@ -31,7 +31,7 @@ router.get('/facebook', passport.authenticate('facebook', {
 
 // callback route for facebook to redirect to
 router.get('/facebook/redirect', passport.authenticate('facebook'), (req, res) => {
-    res.redirect('/question/rules/facebook');
+    res.redirect('/question/rules/?method=facebook');
 });
 
 module.exports = router;

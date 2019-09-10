@@ -7,7 +7,7 @@ router.get('/', isLoggedIn, (req, res)=>{
     let user = req.user;
     let score = 0;
 
-    User.findOne(req.user._id, (err, user)=>{
+    User.findById(req.user._id, (err, user)=>{
         if(err){
             console.log("Score fetching error>>>", user.email);
         }
@@ -28,7 +28,7 @@ router.get('/', isLoggedIn, (req, res)=>{
                 ++score;
         }
     })
-    User.findOneAndUpdate(req.user._id, {score: score}, (err, user)=>{
+    User.findByIdAndUpdate(req.user._id, {score: score}, (err, user)=>{
         if(err)
             console.log("Error updating score>>>", user.email, score);
     })

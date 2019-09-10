@@ -101,13 +101,13 @@ passport.use(
 
 async function getQuestions(){
     if(databaseConnected){
-        var questions = await Question.find({} (err,questions)=>{
+        var questions = await Question.find({}, (err,questions)=>{
 			if(err){
                 console.log("Error fetching questions >>>", err);
                 return 0;
 			}
 			else{
-                console.log("Questions fetched successfully")
+                console.log("Questions fetched successfully");
 			}
         })
         // ##############To Randomize Array###################

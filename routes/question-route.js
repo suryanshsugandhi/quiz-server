@@ -37,7 +37,7 @@ router.get('/quiz',  isLoggedIn, (req, res)=>{
         res.render('question.ejs', {user: req.user, question: question, questionNumber: questionNumber})
     }
     else{
-        res.redirect('/score', {user: req.user})
+        res.redirect('/score')
     }
 })
 

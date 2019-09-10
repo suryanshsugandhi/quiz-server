@@ -12,9 +12,9 @@ router.get('/', isLoggedIn, (req, res)=>{
         }
     })
     .then((reqUser)=>{
-        var score = getScore(reqUser);
+        var score = getScore(user);
 
-        User.findByIdAndUpdate(reqUser._id, {score: score}, (err, user)=>{
+        User.findByIdAndUpdate(user._id, {score: score}, (err, user)=>{
             if(err)
                 console.log("Error updating score>>>", user.email, score);
         })

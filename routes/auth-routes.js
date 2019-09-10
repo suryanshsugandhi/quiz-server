@@ -36,7 +36,7 @@ router.get('/facebook', passport.authenticate('facebook', {
 // callback route for facebook to redirect to
 router.get('/facebook/redirect', passport.authenticate('facebook'), (req, res) => {
     if(req.user.hasPlayed){
-        res.redirect('/played')
+        res.redirect('/question/played')
     }else{
         res.redirect('/question/rules');
     }

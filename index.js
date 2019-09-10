@@ -64,10 +64,6 @@ app.get('/developers', (req, res)=>{
     res.render('developers.ejs')
 })
 
-app.get('/played', (req, res)=>{
-    res.render('played.ejs', {user: req.user})
-})
-
 app.listen(PORT, (req, res)=>{
     console.log("Server running on localhost:" + PORT)
 });

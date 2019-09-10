@@ -38,7 +38,7 @@ passport.use(
 			console.log(profile);
 			User.findOne({googleId: profile.id}).then((foundUser)=>{
 				if(foundUser){
-					logout();
+					req.logout();
 					done(null, foundUser);
 				}
 				else{

@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router();
 
+const User = require('../models/user')
+
 
 router.get('/',  isLoggedIn, (req, res)=>{
     // res.render('question.ejs',{user: req.user, questions: req.user.questions})
@@ -10,6 +12,9 @@ router.get('/',  isLoggedIn, (req, res)=>{
 router.post('/', (req,res)=>{
     var option = req.body.option,
         questionNumber = req.body.question;
+    User.findById({_id: req.user._id}, (err, user)=>{
+        console.log(user.fullName);
+    })
     console.log("Question no>>>", questionNumber);
     console.log("Option Selected>>>", option);
     // add to database

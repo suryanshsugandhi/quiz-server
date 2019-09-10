@@ -3,14 +3,14 @@ const router = express.Router();
 
 router.get('/',  isLoggedIn, (req, res)=>{
     // res.render('question.ejs',{user: req.user, questions: req.user.questions})
-    res.redirect('/quiz/?number=0')
+    res.redirect('/question/quiz/?number=0')
 });
 
 router.post('/', (req,res)=>{
     var option = req.params.option,
         questionNumber = req.params.question;
     // add to database
-    var nextQuestion = '/quiz/?number=' + (questionNumber+1).toString();
+    var nextQuestion = '/question/quiz/?number=' + (questionNumber+1).toString();
     res.redirect(nextQuestion);
 })
 

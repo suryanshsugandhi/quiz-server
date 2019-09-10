@@ -11,8 +11,6 @@ router.get('/', isLoggedIn, (req, res)=>{
         if(err){
             console.log("Score fetching error>>>", user.email);
         }
-    })
-    .then((reqUser)=>{
         let userAnswers = [];
         let correctAnswers = [];
 
@@ -28,12 +26,14 @@ router.get('/', isLoggedIn, (req, res)=>{
                 ++score;
         }
     })
-    User.findByIdAndUpdate(req.user._id, {score: score}, (err, user)=>{
-        if(err)
-            console.log("Error updating score>>>", user.email, score);
-    })
-    .then(()=>{
-        res.render('score.ejs', {user: user, score: score})
+    .then((reqUser)=>{
+        User.findByIdAndUpdate(req.user._id, {score: score}, (err, user)=>{
+            if(err)
+                console.log("Error updating score>>>", user.email, score);
+        })
+        .then(()=>{
+            res.render('score.ejs', {user: user, score: score})
+        })
     })
 })
 

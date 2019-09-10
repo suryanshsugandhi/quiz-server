@@ -107,7 +107,7 @@ async function getQuestions(){
                 return 0;
 			}
 			else{
-                console.log("Questions fetched successfully")
+                console.log("Questions fetched successfully", questions)
 			}
         })
         // ##############To Randomize Array###################

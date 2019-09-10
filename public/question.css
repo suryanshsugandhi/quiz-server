@@ -13,7 +13,7 @@
 
 .card-body{
     text-align: left;
-    max-width: 30vw;
+    min-width: 30vw;
 
 }
 

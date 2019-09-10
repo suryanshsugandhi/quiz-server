@@ -10,7 +10,7 @@ router.get('/', isLoggedIn, (req, res)=>{
         if(err){
             console.log("Score fetching error>>>", user.email);
         }
-        var score = await getScore(user);
+        var score = getScore(user);
     })
     .then((reqUser)=>{
         User.findByIdAndUpdate(reqUser._id, {score: score}, (err, user)=>{
@@ -23,7 +23,7 @@ router.get('/', isLoggedIn, (req, res)=>{
     })
 })
 
-async function getScore(user){
+function getScore(user){
     let score = 0;
     let userAnswers = [];
     let correctAnswers = [];

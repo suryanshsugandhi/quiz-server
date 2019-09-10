@@ -1,0 +1,55 @@
+<% include ./partials/header %>
+<link rel="stylesheet" href="/score.css">
+</head>
+<body>
+  <% include ./partials/navbar %>
+<div class="container">
+
+        
+        <div class="card my-5">
+                
+          <div class="card-body text-center">
+                
+                <div id="user-info">
+                <img id="logo" src="/assets/inventologo.png" alt="">
+                <div class="card-text"><strong><%= user.fullName %></strong></div>
+
+                <h id="congratulations" class="">Sorry you can only play once with an account!</h>
+
+                </div>
+
+                
+
+
+                <div class="card-title text-center">
+                    You scored <strong><%= user.score %>/15</strong> in your previous attempt!
+                  </div>
+
+                <div class="card-text text-center">Try again with a different account</div>    
+        
+           
+
+              <div id="social" class="text-center">
+                  <p class="card-text text-center">Follow us on social media for more updates</p>    
+         
+                      <a href="http://www.facebook.com/inventoiet" target="blank" ><i class="fab fa-facebook-square"></i> inventoIET</a>
+                    
+                      <a href="http://www.instagram.com/invento_iet" target="blank" ><i class="fab fa-instagram"></i> invento_iet</a>
+                    
+                      <br>
+                      <a href="http://www.invento2k19.in" target="blank" ><i class="fas fa-globe"></i> www.invento2k19.in</a>
+
+                <br>
+              </div>
+              
+              <div id="buttons" class="text-center">
+                <a class="btn btn-sm mr-2" id="accept" href="/auth/logout">Continue</a>
+
+              </div>
+      
+          </div>
+        </div>
+      </div>
+
+<% include ./partials/footer %>
+

@@ -1,30 +1,31 @@
 const express = require('express')
 const router = express.Router();
 
-router.get('/', (req, res)=>{
-    res.render('question.ejs',{user: req.user, questions: req.user.questions})
-    res.redirect('/?number=0')
+router.get('/',  isLoggedIn, (req, res)=>{
+    // res.render('question.ejs',{user: req.user, questions: req.user.questions})
+    res.redirect('/quiz/?number=0')
 });
 
 router.post('/', (req,res)=>{
     var option = req.params.option,
         questionNumber = req.params.question;
     // add to database
-    res.redirect('/?number=questionNumber')
+    var nextQuestion = '/quiz/?number=' + (questionNumber+1).toString();
+    res.redirect(nextQuestion);
 })
 
-router.get('/:number', (req, res)=>{
+router.get('/quiz',  isLoggedIn, (req, res)=>{
     if(req.query.number < 15){
         var questionNumber = req.query.number,
-            questions = req.user.questions[questionNumber];
-        res.render('question.ejs', {user: req.user, question: questions, number: questionNumber})
+            question = req.user.questions[questionNumber];
+        res.render('question.ejs', {user: req.user, question: question, number: questionNumber})
     }
     else{
         res.send("Quiz complete!");
     }
 })
 
-router.get('/rules', (req,res)=>{
+router.get('/rules', isLoggedIn, (req,res)=>{
     res.render('rules.ejs', {user: req.user});
 })
 

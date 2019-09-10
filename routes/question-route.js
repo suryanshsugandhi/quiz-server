@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
 
+
 router.get('/',  isLoggedIn, (req, res)=>{
     // res.render('question.ejs',{user: req.user, questions: req.user.questions})
     res.redirect('/question/quiz/?number=0')

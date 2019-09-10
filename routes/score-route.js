@@ -3,7 +3,7 @@ const router = express.Router();
 
 const User = require('../models/user')
 
-router.get('/', isloggedIn, (req, res)=>{
+router.get('/', isLoggedIn, (req, res)=>{
     let user = req.user;
     let score = 0;
 

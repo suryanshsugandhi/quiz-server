@@ -12,12 +12,12 @@ router.post('/', (req,res)=>{
     console.log("Question no>>>", questionNumber);
     console.log("Option Selected>>>", option);
     // add to database
-    var nextQuestion = '/question/quiz/?number=' + (questionNumber+1).toString();
+    var nextQuestion = '/question/quiz/?number=' + (parseInt(questionNumber) + 1).toString();
     res.redirect(nextQuestion);
 })
 
 router.get('/quiz',  isLoggedIn, (req, res)=>{
-    if(req.query.number < 15){
+    if(parseInt(req.query.number) < 15){
         var questionNumber = req.query.number,
             question = req.user.questions[questionNumber];
         res.render('question.ejs', {user: req.user, question: question, questionNumber: questionNumber})

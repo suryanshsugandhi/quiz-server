@@ -21,7 +21,11 @@ router.get('/google', passport.authenticate('google', {
 
 // callback route for google to redirect to
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-    res.redirect('/question/rules');
+    if(req.user.hasPlayed){
+        res.redirect('/')
+    }else{
+        res.redirect('/question/rules');
+    }
 });
 
 // auth with facebook
@@ -31,7 +35,11 @@ router.get('/facebook', passport.authenticate('facebook', {
 
 // callback route for facebook to redirect to
 router.get('/facebook/redirect', passport.authenticate('facebook'), (req, res) => {
-    res.redirect('/question/rules');
+    if(req.user.hasPlayed){
+        res.redirect('/')
+    }else{
+        res.redirect('/question/rules');
+    }
 });
 
 module.exports = router;

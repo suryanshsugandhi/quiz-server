@@ -38,7 +38,7 @@ passport.use(
 			console.log(profile);
 			User.findOne({googleId: profile.id}).then((foundUser)=>{
 				if(foundUser){
-					req.logout();
+					console.log("User has played before>>>", profile._json.email)
 					done(null, foundUser);
 				}
 				else{
@@ -50,7 +50,8 @@ passport.use(
 							fullName: profile.displayName,
 							email: profile._json.email,
 							questions: questions,
-							picture: profile.picture
+							picture: profile.picture,
+							hasPlayed: true
 						}).save().then((newUser)=>{
 							console.log("new user created successfully");
 							done(null, newUser);

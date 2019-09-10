@@ -39,16 +39,14 @@ ul{
     border-radius: 30px;
 }
 
-#buttons #play-btn{
-    /* background: #6159f7; */
-    background: rgba(255, 255, 255, 0.507);  /* fallback for old browsers */
-/* background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  
-background: linear-gradient(to right, #4A00E0, #8E2DE2); */
-    border: 1px solid #8E2DE2;
+#buttons #play-btn:hover{
     color: #8E2DE2;
+    background: none;
 }
 
-#buttons #play-btn:hover{
+#buttons #play-btn{
+    border: 1px solid #8E2DE2;
+
     background: #8E2DE2;
     color: #fff;
 }
@@ -85,4 +83,8 @@ background: linear-gradient(to right, #4A00E0, #8E2DE2); */
 
 .card table{
     overflow: scroll;
+}
+
+a:hover{
+    color: #000;
 }

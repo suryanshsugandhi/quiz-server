@@ -61,6 +61,14 @@ app.get("/", (req, res)=>{
 	res.render("home.ejs");
 });
 
+app.get('/test', (req, res)=>{
+    res.render('score.ejs');
+})
+
+app.get('/developers', (req, res)=>{
+    res.render('developers.ejs')
+})
+
 app.listen(PORT, (req, res)=>{
     console.log("Server running on localhost:" + PORT)
 });

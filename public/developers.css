@@ -1,0 +1,46 @@
+.card{
+    background: rgba(255, 255, 255, 0.207);
+    box-shadow: 5px 6px 12px 0px rgba(0,0,0,0.3);
+    border-bottom: 12px solid #8E2DE2;
+}
+
+.card-title{
+    color: #8E2DE2;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+.card-text{
+    margin-top: 0;
+    font-size: 0.8rem;
+}
+.profile-pic{
+    width: 60%;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+
+#buttons{
+    display: flex;
+    justify-content: center;
+}
+
+#buttons a{
+    padding: 0 10px;
+    border-radius: 50%;
+    font-size: 28px;
+}
+
+#accept{
+    background: #000;
+    border: 1px solid #000000;
+
+    color: #fff;
+}
+
+#accept:hover{
+    border: 1px solid #8E2DE2;
+
+    background: #fff;
+    color: #8E2DE2;
+}

@@ -11,6 +11,12 @@
     min-height: 40vh;
 }
 
+@media only screen and (max-width: 600px) {
+    .card-body {
+      max-width: 40vw;
+    }
+  }
+
 .card-body{
     text-align: left;
     min-width: 30vw;
@@ -78,15 +84,15 @@
 
 
 }
-
-#accept{
+#accept:hover{
     background: none;
 
-    border: 1px solid #8E2DE2;
     color: #8E2DE2;
 }
 
-#accept:hover{
+#accept{
+    border: 1px solid #8E2DE2;
+
     background: #8E2DE2;
     color: #fff;
 }

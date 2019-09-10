@@ -18,7 +18,7 @@ router.get('/quiz',  isLoggedIn, (req, res)=>{
     if(req.query.number < 15){
         var questionNumber = req.query.number,
             question = req.user.questions[questionNumber];
-        res.render('question.ejs', {user: req.user, question: question, number: questionNumber})
+        res.render('question.ejs', {user: req.user, question: question, questionNumber: questionNumber})
     }
     else{
         res.send("Quiz complete!");

@@ -12,11 +12,14 @@ router.get('/',  isLoggedIn, (req, res)=>{
 router.post('/', (req,res)=>{
     var option = req.body.option,
         questionNumber = req.body.question;
-    User.findById({_id: req.user._id}, (err, user)=>{
+
+    var answer  = {
+        questionNumber: questionNumber,
+        option: option
+    }
+    User.findByIdAndUpdate(req.user._id, {$push: {answers: answer}}, {new: true, upsert: true}, (err, user)=>{
         console.log(user.fullName);
     })
-    console.log("Question no>>>", questionNumber);
-    console.log("Option Selected>>>", option);
     // add to database
     var nextQuestion = '/question/quiz/?number=' + (parseInt(questionNumber) + 1).toString();
     res.redirect(nextQuestion);

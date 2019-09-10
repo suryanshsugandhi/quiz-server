@@ -14,6 +14,7 @@ const
 	expressSession  = require("express-session"),
 	profileRoutes = require('./routes/profile-routes'),
     passportSetup = require('./config/passport-setup'),
+    scoreRoute = require('./routes/score-route');
     // =====================================
 
     // Environment
@@ -48,7 +49,8 @@ app.use(express.static(__dirname + '/public'));
 // app.use('/api',api);
 app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
-app.use('/question', questionRoute)
+app.use('/question', questionRoute);
+app.use('/score', scoreRoute);
 
 app.use((req, res, next)=>{
     res.locals.currentUsr = req.user;

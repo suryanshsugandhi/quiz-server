@@ -51,7 +51,6 @@ passport.use(
 							email: profile._json.email,
 							questions: questions,
 							picture: profile.picture,
-							hasPlayed: true
 						}).save().then((newUser)=>{
 							console.log("new user created successfully");
 							done(null, newUser);

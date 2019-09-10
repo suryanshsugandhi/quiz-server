@@ -6,7 +6,12 @@ const User = require('../models/user')
 
 router.get('/',  isLoggedIn, (req, res)=>{
     // res.render('question.ejs',{user: req.user, questions: req.user.questions})
-    res.redirect('/question/quiz/?number=0')
+    User.findByIdAndUpdate(req.user.id, {hasPlayed: true}, {new: true, upsert: true}, (err, user)=>{
+        console.log("Quiz started for>>>", user)
+    })
+    .then((user)=>{
+        res.redirect('/question/quiz/?number=0')
+    })
 });
 
 router.post('/', (req,res)=>{

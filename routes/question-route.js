@@ -9,6 +9,8 @@ router.get('/',  isLoggedIn, (req, res)=>{
 router.post('/', (req,res)=>{
     var option = req.params.option,
         questionNumber = req.params.question;
+    console.log("Question no>>>", questionNumber);
+    console.log("Option Selected>>>", option);
     // add to database
     var nextQuestion = '/question/quiz/?number=' + (questionNumber+1).toString();
     res.redirect(nextQuestion);

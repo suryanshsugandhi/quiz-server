@@ -22,7 +22,7 @@ router.get('/google', passport.authenticate('google', {
 // callback route for google to redirect to
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
     if(req.user.hasPlayed){
-        res.redirect('/')
+        res.redirect('/question/played')
     }else{
         res.redirect('/question/rules');
     }

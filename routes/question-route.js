@@ -46,8 +46,9 @@ router.get('/rules', isLoggedIn, (req,res)=>{
 })
 
 router.get('/played', isLoggedIn, (req, res)=>{
+    let user = req.user;
     req.logout();
-    res.render('played.ejs', {user: req.user});
+    res.render('played.ejs', {user: user});
 })
 
 function isLoggedIn(req, res, next){

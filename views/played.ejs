@@ -22,7 +22,11 @@
 
 
                 <div class="card-title text-center">
-                    You scored <strong><%= user.score %>/15</strong> in your previous attempt!
+                    <% if(user.score){ %>
+                      You scored <strong><%= user.score %>/15</strong> in your previous attempt!
+                    <% } else{ %>
+                      You did not attempt the whole quiz!
+                      <%%>
                   </div>
 
                 <div class="card-text text-center">Try again with a different account</div>    

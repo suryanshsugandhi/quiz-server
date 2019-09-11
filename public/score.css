@@ -76,11 +76,6 @@
     border-radius: 30px;
 }
 
-#accept:hover{
-    background: none;
-
-    color: #8E2DE2;
-}
 
 #accept{
     border: 1px solid #8E2DE2;
@@ -89,14 +84,18 @@
     color: #fff;
 }
 
-#reject:hover{
-    background: none;
-    color: black;
-}
-
 #reject{
     border: 1px solid #000;
 
     background: #000;
     color: #fff;
+}
+
+a{
+    font-size: 0.8rem;
+
+}
+a:hover{
+    color: #000;
+    text-decoration: none;
 }

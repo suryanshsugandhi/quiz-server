@@ -68,13 +68,19 @@ app.get('/developers', (req, res)=>{
     res.render('developers.ejs')
 })
 
-app.get('/test', (req,res)=>{
-    res.render('question.ejs', {question: {
-        title: 'Question Title',
-        options: 'optiona, dusajd, jdifkjd, dijsf;k',
-        answer: 'a'
-    }, questionNumber: 1})
-})
+// app.get('/test', (req,res)=>{
+//     res.render('question.ejs', {question: {
+//         title: 'Question Title',
+//         options: 'optiona, dusajd, jdifkjd, dijsf;k',
+//         answer: 'a'
+//     }, questionNumber: 1})
+// })
+
+// app.get('/test', (req, res)=>{
+//     res.render('score.ejs', {user: {
+//         fullName: 'Suryansh Sugandhi'
+//     }, score: 12})
+// })
 
 app.listen(PORT, (req, res)=>{
     console.log("Server running on localhost:" + PORT)

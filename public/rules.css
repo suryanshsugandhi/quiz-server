@@ -39,21 +39,12 @@
     border-radius: 30px;
 }
 
-#accept:hover{
-    background: none;
-    color: #8E2DE2;
-}
 
 #accept{
     border: 1px solid #8E2DE2;
 
     background: #8E2DE2;
     color: #fff;
-}
-
-#reject:hover{
-    background: none;
-    color: black;
 }
 
 #reject{

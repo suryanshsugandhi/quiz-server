@@ -39,10 +39,10 @@ ul{
     border-radius: 30px;
 }
 
-#buttons #play-btn:hover{
+/* #buttons #play-btn:hover{
     color: #8E2DE2;
     background: none;
-}
+} */
 
 #buttons #play-btn{
     border: 1px solid #8E2DE2;

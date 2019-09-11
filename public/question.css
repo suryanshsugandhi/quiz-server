@@ -18,7 +18,7 @@
 }
 .card-body{
     text-align: left;
-    min-width: 30vw;
+    width: 350px;
 }
 
 #question-no{

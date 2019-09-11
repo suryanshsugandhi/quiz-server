@@ -4,6 +4,7 @@ const
     app = express(),
     bodyParser = require('body-parser'),
     cors = require('cors'),
+    User = require('./models/user')
     // =====================================
 
     // Routes
@@ -58,7 +59,11 @@ app.use((req, res, next)=>{
 });
 
 app.get("/", (req, res)=>{
-	res.render("home.ejs");
+    let topUsers;
+    User.find({}).sort({score: -1}).exec((err, users)=>{
+        topUsers = users;
+        res.render("home.ejs", {users: topUsers});
+    })
 });
 app.get('/developers', (req, res)=>{
     res.render('developers.ejs')

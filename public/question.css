@@ -16,10 +16,9 @@
       width: 30vw;
     }
 }
-
 .card-body{
     text-align: left;
-    width: 90vw;    
+    min-width: 30vw;
 }
 
 #question-no{

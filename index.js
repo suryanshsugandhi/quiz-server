@@ -59,14 +59,21 @@ app.use((req, res, next)=>{
 });
 
 app.get("/", (req, res)=>{
-    let topUsers;
     User.find({}).sort({score: -1}).exec((err, users)=>{
-        topUsers = users;
+        let topUsers = users;
         res.render("home.ejs", {users: topUsers});
     })
 });
 app.get('/developers', (req, res)=>{
     res.render('developers.ejs')
+})
+
+app.get('/test', (req,res)=>{
+    res.render('question.ejs', {question: {
+        title: 'Question Title',
+        options: 'optiona, dusajd, jdifkjd, dijsf;k',
+        answer: 'a'
+    }, questionNumber: 1})
 })
 
 app.listen(PORT, (req, res)=>{

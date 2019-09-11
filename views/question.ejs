@@ -8,9 +8,12 @@
                       <div id="question-no">
                         <%= parseInt(questionNumber) + 1 %>/15
                       </div>
-                      <div id="none-selected" class="hidden text-left">
-                        Please select an option to continue!
+                      <div id="incorrect" class="none-selected hidden2 incorrect text-left">
+                        Oops! Got this one wrong!
                       </div>
+                      <div id="correct" class="none-selected hidden2 correct text-left">
+                          Correct answer! Going good!
+                        </div>
                         <div id="question-title" class="card-title">
                           <%= question.title %>
                         </div> 
@@ -35,11 +38,14 @@
                         </div>
                       <div id="buttons">
                         <a id="leave-quiz" href="/auth/logout">Leave the quiz</a>
+
                         <form action="/question" method="POST">
+                          <input id="answer" name="answer" class="hidden2" type="text" value="<%=question.answer%>">
                           <input id="question-number" name="question" type="number" class="hidden2" value="<%=questionNumber%>">
                           <input id="selected-option" name="option" type="text" class="hidden2">
-                          <button type="submit" class="btn btn-sm mr-2" id="accept"><i class="fas fa-check"></i> Next</button>
+                          <button type="submit" class="btn btn-sm mr-2 hidden2" id="reject">Next</button>
                         </form>
+                        <button onclick="submit()" class="btn btn-sm mr-2" id="accept"><i class="fas fa-check"></i> Submit</button>
             
                       </div>
               

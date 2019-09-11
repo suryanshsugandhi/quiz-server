@@ -26,11 +26,17 @@
     color:rgb(22, 180, 22);
     font-weight: 700;
 }
-#none-selected{
-    color: #dc3545;
+.none-selected{
     padding: 0 2vw;
     transition: visibility 0s, opacity 0.5s linear;
 }
+.none-selected.incorrect{
+    color: #dc3545;
+}
+.none-selected.correct{
+    color: rgb(22, 180, 22);
+}
+
 .hidden{
     opacity: 0;
     visibility: hidden;
@@ -66,9 +72,20 @@
 }
 
 .option-box.selected{
-    background: rgb(22, 180, 22);
+    background: #8E2DE2;
     color: #fff;
     border: 1px solid transparent;
+}
+
+.option-box.incorrect{
+    background: #dc3545;
+    color: #fff;
+
+}
+.option-box.correct{
+    background: rgb(22, 180, 22);
+    color: #fff;
+
 }
 
 #buttons{
@@ -96,6 +113,13 @@
     color: #fff;
 }
 
+
+#reject{
+    border: 1px solid #000;
+
+    background: #000;
+    color: #fff;
+}
 
 #leave-quiz{
     font-size: 0.8rem;

@@ -33,7 +33,7 @@ router.post('/', (req,res)=>{
 router.get('/quiz',  isLoggedIn, (req, res)=>{
     if(parseInt(req.query.number) < 15){
         var questionNumber = req.query.number,
-            question = req.user.questions[questionNumber];
+        question = req.user.questions[questionNumber];
         res.render('question.ejs', {user: req.user, question: question, questionNumber: questionNumber})
     }
     else{

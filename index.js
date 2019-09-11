@@ -4,7 +4,8 @@ const
     app = express(),
     bodyParser = require('body-parser'),
     cors = require('cors'),
-    User = require('./models/user')
+    User = require('./models/user'),
+    Feedback = require('./models/feedback')
     // =====================================
 
     // Routes
@@ -81,6 +82,48 @@ app.get('/developers', (req, res)=>{
 //         fullName: 'Suryansh Sugandhi'
 //     }, score: 12})
 // })
+
+app.get('/certificate', (req,res)=>{
+    let user = req.user;
+    res.render('certificate.ejs', {user: user});
+})
+
+app.get('/feedback', (req,res)=>{
+    let user = req.user;
+    req.logout();
+    res.render('feedback.ejs', {user: user})
+})
+
+app.post('/feedback', isLoggedIn, (req, res)=>{
+    let name = req.body.name;
+    let email = req.body.email;
+    let feedback = req.body.feedback;
+    let result = new Feedback({
+        'name': name,
+        'email': email,
+        'feedback': feedback
+    })
+
+    Feedback.save(result, (err, result)=>{
+        if(err){
+            console.log(err);
+        }
+        else {
+            console.log("New feedback generated")
+        }
+    }).then(()=>{
+        res.redirect('/')
+    })
+})
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated())
+     return next();
+    else
+    {  
+        res.redirect("/auth/login");
+    }
+}
 
 app.listen(PORT, (req, res)=>{
     console.log("Server running on localhost:" + PORT)

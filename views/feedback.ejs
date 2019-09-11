@@ -12,43 +12,49 @@
                 
                 <div id="user-info">
                 <img id="logo" src="/assets/inventologo.png" alt="">
-                <div id="congratulations" class="card-title">Congratulations!</div>
+                <div id="congratulations" class="card-title">Feedback - Invento Quiz Contest</div>
 
-                    <div class="card-text"><strong><%= user.fullName%></strong></div>
+                    <div class="card-text text-secondary"><strong>Giving feedback as <%= user.fullName %></strong></div>
                 </div>
 
                 
 
 
                 <div class="card-title text-center">
-                    You got <strong><%= score %>/15</strong> answers correct!
+                     <strong></strong>
                   </div>
 
-                <div class="card-text text-center"><strong>You are now eligible to win exciting gifts from Invento!</strong></div>    
+                <div class="card-text text-center"><strong>Please be honest. Your feedback matters a lot! :)</strong></div>    
         
            
 
-              <div id="social" class="text-center">
-                  <p class="card-text text-center">Follow us on social media for more updates</p>    
-         
-                      <a href="http://www.facebook.com/inventoiet" target="blank" ><i class="fab fa-facebook-square"></i> inventoIET</a>
-                    
-                      <a href="http://www.instagram.com/invento_iet" target="blank" ><i class="fab fa-instagram"></i> invento_iet</a>
-                    
-                      <br>
-                      <a href="http://www.invento2k19.in" target="blank" ><i class="fas fa-globe"></i> www.invento2k19.in</a>
 
+              <form class="form" action="/feedback" method="POST">
+                <input type="text" name="name" class="hidden" value="<%user.fullName%>">
+                <input type="text" name="email" class="hidden" value="<%user.email%>">
+                <textarea name="feedback" required id="" cols="30" rows="6"></textarea>
                 <br>
-              </div>
+                <div id="buttons">
+                    <button type="submit" class="btn btn-sm mr-2" id="accept">Submit</button>
+                </div>
+              </form>
               
               <div id="buttons" class="text-center">
-                <a class="btn btn-sm mr-2" id="accept" href="/auth/logout"><i class="fas fa-download"></i> Certificate</a>
-                <a class="btn btn-sm mr-2" id="reject" href="/auth/logout">Sign Out</a>
 
               </div>
-          <a href="/developers" target="blank" class="mt-5">Meet the Developers</a>
-          <a href="/developers" target="blank" class="mt-2">Give feedback</a>
 
+              <div id="social" class="text-center">
+                    <p class="card-text text-center">Follow us on social media for more updates</p>    
+           
+                        <a href="http://www.facebook.com/inventoiet" target="blank" ><i class="fab fa-facebook-square"></i> inventoIET</a>
+                      
+                        <a href="http://www.instagram.com/invento_iet" target="blank" ><i class="fab fa-instagram"></i> invento_iet</a>
+                      
+                        <br>
+                        <a href="http://www.invento2k19.in" target="blank" ><i class="fas fa-globe"></i> www.invento2k19.in</a>
+  
+                  <br>
+                </div>
       
           </div>
         </div>

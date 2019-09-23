@@ -84,8 +84,12 @@ app.get('/developers', (req, res)=>{
 // })
 
 app.get('/certificate', (req,res)=>{
-    let user = req.user;
-    res.render('certificate.ejs', {user: user});
+    let user = {
+        fullName: 'Suryansh Sugandhi',
+    };
+    res.render('certificate.ejs', {user: {
+        fullName: 'Suryansh Sugandhi'
+    }, score: 13})
 })
 
 app.get('/feedback', (req,res)=>{

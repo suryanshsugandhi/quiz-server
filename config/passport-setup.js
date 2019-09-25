@@ -119,7 +119,7 @@ async function getQuestions(){
             questions[rand] = temp;
         }
         // ###################################################
-        questions = questions.slice(0,15);
+        questions = questions.slice(0,30);
         return (questions);
     }
     else{

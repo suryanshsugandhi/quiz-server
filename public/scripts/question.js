@@ -36,6 +36,7 @@ function submit(){
     submitted = true;
 }
 
+
 function confirm(){
     window.onbeforeunload = function() {
         return 'Are you sure you want to navigate away from this page?';

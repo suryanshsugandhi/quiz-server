@@ -85,7 +85,7 @@ app.get('/developers', (req, res)=>{
 
 app.get('/certificate', (req,res)=>{
     let user = req.user;
-    let score = req.body.score
+    let score = req.user.score
     res.render('certificate.ejs', {user: user, score: score})
 })
 

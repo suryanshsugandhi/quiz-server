@@ -38,7 +38,9 @@ function submit(){
 
 
 function confirm(){
-    window.onbeforeunload = function() {
-        return 'Are you sure you want to navigate away from this page?';
-    };
+    if(!submitted){
+        window.onbeforeunload = function() {
+            return 'Are you sure you want to leave this page?';
+        };
+    }
 }
